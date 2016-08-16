@@ -1,0 +1,13 @@
+<h1>Posts</h1>
+<%= link_to 'New Post', posts_new_path %>
+<%= link_to 'Logout', logout_path %>
+<ul>
+  <% @posts.each do |post| %>
+    <li>title: <%= post.title %><br>body: <%= post.post_body %><br>
+      <% unless cookies[:remember_token] == nil %>
+        by: <%= post.user.name %><br>
+      <% end %>
+    </li>
+  <% end %>
+</ul>
+
