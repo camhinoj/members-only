@@ -1,6 +1,10 @@
 <h1>Posts</h1>
-<%= link_to 'New Post', posts_new_path %>
-<%= link_to 'Logout', logout_path %>
+<% unless cookies[:remember_token] == nil %>
+  <%= link_to 'New Post', posts_new_path %>
+  <%= link_to 'Logout', logout_path %>
+<% else %>
+  <%= link_to 'Log in', login_path %>
+<% end %>
 <ul>
   <% @posts.each do |post| %>
     <li>title: <%= post.title %><br>body: <%= post.post_body %><br>
